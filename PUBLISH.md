@@ -78,15 +78,19 @@ https://zzcsama.github.io/github-black-tech-ranking/social/github-black-tech-ran
 
 ```text
 Secrets:
+DEEPSEEK_API_KEY
 TELEGRAM_BOT_TOKEN
 TELEGRAM_CHAT_ID
 
 Variables:
+DEEPSEEK_MODEL
 PUBLIC_PAGE_URL
 PUBLIC_IMAGE_URL
 ```
 
 `TELEGRAM_CHAT_ID` 可以是公开频道名，例如 `@your_channel`；私有频道通常是 `-100...` 开头的数字。Bot 需要加入频道并设为管理员。
+
+`DEEPSEEK_MODEL` 不填也可以，默认使用 `deepseek-v4-flash`。没有配置 `DEEPSEEK_API_KEY` 时，榜单仍会更新，只是中文解释会使用内置规则。
 
 第一次没有 7 天前快照时，增长会显示“新上榜”。运行一周后，就会显示真实的本周 Star 增长。
 
