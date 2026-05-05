@@ -95,11 +95,27 @@ outputs/                       输出图片目录
 ```text
 GitHub API
   -> data/snapshots/YYYY-MM-DD.json
+  -> DeepSeek 读取 description / README 生成中文大白话
   -> 计算 7 天增长
   -> docs/data/ranking.json
   -> docs/ 可点击网页
   -> outputs/github-black-tech-ranking.png
   -> 公众号 / X / 小红书 / GitHub README
+```
+
+## DeepSeek 大白话总结
+
+自动采集时会优先读取仓库的 `description` 和 `README`，再调用 DeepSeek 生成一句更准确的中文解释。没有配置 DeepSeek 时，会自动退回到内置规则总结。
+
+在仓库 Settings -> Secrets and variables -> Actions 中添加：
+
+```text
+Secrets:
+DEEPSEEK_API_KEY     DeepSeek 平台生成的 API key
+
+Variables 可选:
+DEEPSEEK_MODEL       默认 deepseek-v4-flash
+DEEPSEEK_BASE_URL    默认 https://api.deepseek.com
 ```
 
 ## 每周日推送到 Telegram
@@ -131,7 +147,6 @@ TELEGRAM_CHANNEL
 
 ## 后续可以增强的地方
 
-- 接 OpenAI API，把 README 和 description 总结成更准的中文“大白话”。
 - 增加多尺寸导出，分别适配小红书、公众号封面、X 和 README。
 - 增加分类榜，比如 AI Agent、视频生成、代码工具、RAG、开发者效率。
 - 增加人工审核清单，避免把无关仓库或刷星仓库排进去。
