@@ -6,10 +6,11 @@
 
 ## 先看效果
 
-本机需要有 Node.js。导出 PNG 需要 `rsvg-convert`，macOS 可以用：
+本机需要有 Node.js。图片导出使用 Playwright 截取真实网页，第一次安装依赖后需要安装 Chromium：
 
 ```bash
-brew install librsvg
+npm install
+npx playwright install chromium
 ```
 
 ```bash
@@ -41,7 +42,7 @@ outputs/github-black-tech-ranking.png
 outputs/github-black-tech-ranking.svg
 ```
 
-网页里的每一张项目卡片都可以点击，直接跳转到对应 GitHub 仓库。
+网页里的每一张项目卡片都可以点击，直接跳转到对应 GitHub 仓库。社媒图片由 `docs/index.html` 截图生成，所以和网页使用同一份数据、同一套样式。
 
 ## 接真实 GitHub 数据
 
@@ -78,7 +79,8 @@ data/ranking.sample.json       样例榜单数据
 scripts/collect-github.js      调 GitHub API，保存快照并生成榜单 JSON
 scripts/sync-site-data.js      同步榜单数据到 docs/data/ranking.json
 scripts/cache-avatars.js       缓存 GitHub 头像到 docs/assets/avatars
-scripts/render-svg.js          把榜单 JSON 渲染成 SVG 图片
+scripts/capture-page.js        截取真实网页并生成 PNG 图片
+scripts/render-svg.js          旧版 SVG 渲染脚本，可作为备用
 scripts/serve.js               本地预览网页
 data/ranking.generated.json
 data/snapshots/YYYY-MM-DD.json
@@ -130,6 +132,6 @@ TELEGRAM_CHANNEL
 ## 后续可以增强的地方
 
 - 接 OpenAI API，把 README 和 description 总结成更准的中文“大白话”。
-- 用 Playwright 把 SVG/HTML 导出成 PNG，适合小红书、公众号封面。
+- 增加多尺寸导出，分别适配小红书、公众号封面、X 和 README。
 - 增加分类榜，比如 AI Agent、视频生成、代码工具、RAG、开发者效率。
 - 增加人工审核清单，避免把无关仓库或刷星仓库排进去。
