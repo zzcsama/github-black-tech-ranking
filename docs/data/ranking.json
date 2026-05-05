@@ -10,9 +10,9 @@
       "url": "https://github.com/openclaw/openclaw",
       "avatarUrl": "https://avatars.githubusercontent.com/u/252820863?v=4",
       "repo": "openclaw/openclaw",
-      "summaryZh": "一个近期增长很快的AI相关开源项目",
+      "summaryZh": "在本地设备上运行你的个人AI助手，支持多种聊天平台和语音交互",
       "summaryEn": "Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 ",
-      "stars": 368477,
+      "stars": 368496,
       "weeklyGrowth": 0,
       "growthPending": true,
       "hot": false,
@@ -27,6 +27,7 @@
         "own-your-data",
         "personal"
       ],
+      "summarySource": "deepseek",
       "avatarLocal": "assets/avatars/openclaw.png"
     },
     {
@@ -34,15 +35,16 @@
       "url": "https://github.com/ultraworkers/claw-code",
       "avatarUrl": "https://avatars.githubusercontent.com/u/272961631?v=4",
       "repo": "ultraworkers/claw-code",
-      "summaryZh": "提升AI写代码和理解代码库的效率",
+      "summaryZh": "用Rust实现的ClawCLI工具，帮你通过命令行与AI模型交互并自动化任务",
       "summaryEn": "The repo is finally unlocked. enjoy the party! The fastest repo in history to surpass 100K stars ⭐. Join Discord: https://discord.gg/5TUQKqFWd Built in Rust using oh-my-codex.",
-      "stars": 190109,
+      "stars": 190119,
       "weeklyGrowth": 0,
       "growthPending": true,
       "hot": false,
       "accent": "#334155",
       "language": "Rust",
       "topics": [],
+      "summarySource": "deepseek",
       "avatarLocal": "assets/avatars/ultraworkers.png"
     },
     {
@@ -50,9 +52,9 @@
       "url": "https://github.com/n8n-io/n8n",
       "avatarUrl": "https://avatars.githubusercontent.com/u/45487711?v=4",
       "repo": "n8n-io/n8n",
-      "summaryZh": "提升AI写代码和理解代码库的效率",
+      "summaryZh": "n8n是一个低代码工作流自动化平台，支持400+集成和原生AI能力，让你用可视化拖拽",
       "summaryEn": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-      "stars": 186740,
+      "stars": 186743,
       "weeklyGrowth": 0,
       "growthPending": true,
       "hot": false,
@@ -80,6 +82,7 @@
         "workflow",
         "workflow-automation"
       ],
+      "summarySource": "deepseek",
       "avatarLocal": "assets/avatars/n8n-io.png"
     },
     {
@@ -87,9 +90,9 @@
       "url": "https://github.com/Significant-Gravitas/AutoGPT",
       "avatarUrl": "https://avatars.githubusercontent.com/u/130738209?v=4",
       "repo": "Significant-Gravitas/AutoGPT",
-      "summaryZh": "搭建智能体工作流，把复杂任务拆给多个AI处理",
+      "summaryZh": "AutoGPT让你创建和部署能自动处理复杂工作流的AI代理",
       "summaryEn": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
-      "stars": 183995,
+      "stars": 183994,
       "weeklyGrowth": 0,
       "growthPending": true,
       "hot": false,
@@ -108,6 +111,7 @@
         "openai",
         "python"
       ],
+      "summarySource": "deepseek",
       "avatarLocal": "assets/avatars/Significant-Gravitas.png"
     },
     {
@@ -115,9 +119,9 @@
       "url": "https://github.com/affaan-m/everything-claude-code",
       "avatarUrl": "https://avatars.githubusercontent.com/u/124439313?v=4",
       "repo": "affaan-m/everything-claude-code",
-      "summaryZh": "搭建智能体工作流，把复杂任务拆给多个AI处理",
+      "summaryZh": "为ClaudeCode等AI编程工具提供技能、记忆和安全优化的性能增强系统",
       "summaryEn": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
-      "stars": 173573,
+      "stars": 173601,
       "weeklyGrowth": 0,
       "growthPending": true,
       "hot": false,
@@ -133,6 +137,7 @@
         "mcp",
         "productivity"
       ],
+      "summarySource": "deepseek",
       "avatarLocal": "assets/avatars/affaan-m.png"
     },
     {
@@ -140,9 +145,9 @@
       "url": "https://github.com/ollama/ollama",
       "avatarUrl": "https://avatars.githubusercontent.com/u/151674099?v=4",
       "repo": "ollama/ollama",
-      "summaryZh": "围绕大模型开发、部署或增强应用能力",
+      "summaryZh": "Ollama让你在本地快速运行和管理DeepSeek、Qwen、Gemma等开源大模",
       "summaryEn": "Get up and running with Kimi-K2.5, GLM-5, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
-      "stars": 170736,
+      "stars": 170742,
       "weeklyGrowth": 0,
       "growthPending": true,
       "hot": false,
@@ -165,6 +170,7 @@
         "ollama",
         "qwen"
       ],
+      "summarySource": "deepseek",
       "avatarLocal": "assets/avatars/ollama.png"
     },
     {
@@ -172,9 +178,9 @@
       "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
       "avatarUrl": "https://avatars.githubusercontent.com/u/20920490?v=4",
       "repo": "AUTOMATIC1111/stable-diffusion-webui",
-      "summaryZh": "用AI生成、编辑或理解图片内容",
+      "summaryZh": "一个基于Gradio的StableDiffusion网页界面，支持文生图、图生图、修",
       "summaryEn": "Stable Diffusion web UI",
-      "stars": 162728,
+      "stars": 162727,
       "weeklyGrowth": 0,
       "growthPending": true,
       "hot": false,
@@ -198,6 +204,7 @@
         "upscaling",
         "web"
       ],
+      "summarySource": "deepseek",
       "avatarLocal": "assets/avatars/AUTOMATIC1111.png"
     },
     {
@@ -205,9 +212,9 @@
       "url": "https://github.com/f/prompts.chat",
       "avatarUrl": "https://avatars.githubusercontent.com/u/196477?v=4",
       "repo": "f/prompts.chat",
-      "summaryZh": "提升AI写代码和理解代码库的效率",
+      "summaryZh": "全球最大的开源AI提示词库，支持ChatGPT、Claude等模型，可自建私有部署",
       "summaryEn": "f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source — self-host for your organization with complete privacy.",
-      "stars": 161580,
+      "stars": 161585,
       "weeklyGrowth": 0,
       "growthPending": true,
       "hot": false,
@@ -233,6 +240,7 @@
         "prompts-chat",
         "typescript"
       ],
+      "summarySource": "deepseek",
       "avatarLocal": "assets/avatars/f.png"
     }
   ]
