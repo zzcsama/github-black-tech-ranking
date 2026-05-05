@@ -26,6 +26,27 @@ body {
     "Microsoft YaHei", sans-serif;
 }
 
+body.capture {
+  width: 1080px;
+  min-height: 1440px;
+  overflow: hidden;
+}
+
+body.capture .shell {
+  width: 952px;
+  padding-top: 48px;
+}
+
+body.capture .masthead {
+  grid-template-columns: minmax(0, 1fr) 250px;
+}
+
+body.capture .repo-card:hover {
+  transform: none;
+  border-color: var(--line);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+}
+
 .shell {
   width: min(1120px, calc(100% - 40px));
   margin: 0 auto;
