@@ -72,18 +72,25 @@ https://zzcsama.github.io/github-black-tech-ranking/social/github-black-tech-ran
 .github/workflows/weekly-ranking.yml
 ```
 
-## Hermes / Telegram 推送
+## Telegram 推送
 
-每周更新工作流默认安排在每周日 09:00（北京时间）。如需推送到 Telegram 频道，在仓库 Settings -> Secrets and variables -> Actions 中添加：
+每周更新工作流默认安排在每周日 09:00（北京时间）。推荐直接用 Telegram Bot 推送。在仓库 Settings -> Secrets and variables -> Actions 中添加：
 
 ```text
 Secrets:
-HERMES_WEBHOOK_URL
-TELEGRAM_CHANNEL
+TELEGRAM_BOT_TOKEN
+TELEGRAM_CHAT_ID
 
 Variables:
 PUBLIC_PAGE_URL
 PUBLIC_IMAGE_URL
 ```
 
-`PUBLIC_IMAGE_URL` 可以留空；如果留空，脚本会用 `PUBLIC_PAGE_URL/social/github-black-tech-ranking.png`。
+`TELEGRAM_CHAT_ID` 可以是公开频道名，例如 `@your_channel`；私有频道通常是 `-100...` 开头的数字。Bot 需要加入频道并设为管理员。
+
+如需继续使用 Hermes，可额外配置：
+
+```text
+HERMES_WEBHOOK_URL
+TELEGRAM_CHANNEL
+```

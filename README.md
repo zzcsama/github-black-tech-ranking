@@ -102,19 +102,28 @@ GitHub API
 
 ## 每周日推送到 Telegram
 
-`.github/workflows/weekly-ranking.yml` 会在每周日 09:00（北京时间）更新榜单。要通过 Hermes 推送到 Telegram 频道，在仓库 Settings -> Secrets and variables -> Actions 中添加：
+`.github/workflows/weekly-ranking.yml` 会在每周日 09:00（北京时间）更新榜单。推荐直接用 Telegram Bot 推送，在仓库 Settings -> Secrets and variables -> Actions 中添加：
 
 ```text
 Secrets:
-HERMES_WEBHOOK_URL   你的 Hermes webhook 地址
-TELEGRAM_CHANNEL     Telegram 频道 ID 或频道名，如果 Hermes 需要
+TELEGRAM_BOT_TOKEN   Telegram BotFather 给你的 bot token
+TELEGRAM_CHAT_ID     Telegram 频道 ID，或公开频道名，例如 @your_channel
 
 Variables:
 PUBLIC_PAGE_URL      GitHub Pages 页面地址
 PUBLIC_IMAGE_URL     榜单 PNG 的公开地址，可选
 ```
 
-没有配置 `HERMES_WEBHOOK_URL` 时，工作流只更新网页和图片，不会推送。
+把 bot 加进频道并设为管理员后，工作流会把榜单 PNG 和摘要直接发到频道。
+
+如果你仍想走 Hermes，也可以额外配置：
+
+```text
+HERMES_WEBHOOK_URL
+TELEGRAM_CHANNEL
+```
+
+没有配置 Telegram 或 Hermes 的 secret 时，工作流只更新网页和图片，不会推送。
 
 ## 后续可以增强的地方
 

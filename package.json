@@ -15,6 +15,7 @@
     "build:generated": "npm run collect && node scripts/sync-site-data.js --input data/ranking.generated.json --output docs/data/ranking.json && npm run site:avatars && npm run site:render && npm run site:png && npm run site:assets",
     "dev": "node scripts/serve.js --root docs --port 4173",
     "publish:hermes": "node scripts/publish-hermes.js --input docs/data/ranking.json",
+    "publish:telegram": "node scripts/publish-telegram.js --input docs/data/ranking.json --photo docs/social/github-black-tech-ranking.png",
     "collect": "node scripts/collect-github.js --output data/ranking.generated.json",
     "render:generated": "node scripts/render-svg.js --input data/ranking.generated.json --output outputs/github-black-tech-ranking.svg",
     "render:png": "rsvg-convert -w 1080 -h 1440 outputs/github-black-tech-ranking.svg -o outputs/github-black-tech-ranking.png"
