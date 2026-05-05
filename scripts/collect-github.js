@@ -43,13 +43,15 @@ const baseline = await loadBestBaseline(snapshotDir, date);
 const rankingItems = repos
   .map((repo) => {
     const baselineStars = baseline?.[repo.full_name]?.stars;
-    const weeklyGrowth = Number.isFinite(baselineStars) ? repo.stargazers_count - baselineStars : 0;
+    const growthPending = !Number.isFinite(baselineStars);
+    const weeklyGrowth = growthPending ? 0 : repo.stargazers_count - baselineStars;
     return {
       repo: repo.full_name,
       summaryZh: summarizeZh(repo),
       summaryEn: repo.description || "No description provided.",
       stars: repo.stargazers_count,
       weeklyGrowth: Math.max(weeklyGrowth, 0),
+      growthPending,
       hot: weeklyGrowth > 5000,
       accent: colorFromString(repo.full_name),
       url: repo.html_url,
@@ -126,7 +128,8 @@ async function loadBestBaseline(dir, currentDate) {
 }
 
 function rankingScore(item) {
-  return item.weeklyGrowth * 10 + item.stars * 0.05;
+  const growthScore = item.growthPending ? 0 : item.weeklyGrowth * 10;
+  return growthScore + item.stars * 0.05;
 }
 
 function summarizeZh(repo) {

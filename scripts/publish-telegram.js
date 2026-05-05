@@ -41,9 +41,8 @@ function buildCaption(ranking) {
     ranking.subtitle || "GitHub 本周增长精选",
     "",
     ...items.map((item) => {
-      return `${item.rank || ""}. ${item.repo} ★ ${formatCompact(item.stars)} ↗ +${formatCompact(
-        item.weeklyGrowth,
-      )}\n${item.summaryZh || ""}`;
+      const growth = item.growthPending ? "新上榜" : `↗ +${formatCompact(item.weeklyGrowth)}`;
+      return `${item.rank || ""}. ${item.repo} ★ ${formatCompact(item.stars)} ${growth}\n${item.summaryZh || ""}`;
     }),
     "",
     pageUrl

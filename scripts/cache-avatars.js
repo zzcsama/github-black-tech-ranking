@@ -13,40 +13,26 @@ for (const item of ranking.items || []) {
   const [owner] = String(item.repo || "").split("/");
   if (!owner) continue;
 
-  const filename = `${sanitize(owner)}.png`;
-  const avatarLocal = `assets/avatars/${filename}`;
-  const url = item.avatarUrl || `https://github.com/${owner}.png?size=160`;
-  const outputPath = resolve(avatarDir, filename);
-
-  if (existsSync(outputPath) && !args.refresh) {
-    item.avatarLocal = avatarLocal;
-    console.log(`Reused ${owner} -> ${avatarLocal}`);
+  const existing = findExistingAvatar(owner);
+  if (existing && !args.refresh) {
+    item.avatarLocal = existing.avatarLocal;
+    console.log(`Reused ${owner} -> ${existing.avatarLocal}`);
     continue;
   }
 
-  try {
-    const response = await fetch(url, {
-      headers: {
-        "User-Agent": "github-black-tech-ranking"
-      }
-    });
-    if (!response.ok) {
-      console.warn(`Skipped ${owner}: ${response.status}`);
-      continue;
-    }
+  const urls = [
+    `https://github.com/${owner}.png?size=160`,
+    item.avatarUrl
+  ].filter(Boolean);
 
-    const data = Buffer.from(await response.arrayBuffer());
-    await writeFile(outputPath, data);
-    item.avatarLocal = avatarLocal;
-    console.log(`Cached ${owner} -> ${avatarLocal}`);
-  } catch (error) {
-    if (existsSync(outputPath)) {
-      item.avatarLocal = avatarLocal;
-      console.log(`Reused ${owner} -> ${avatarLocal}`);
-      continue;
-    }
+  let cached = false;
+  for (const url of urls) {
+    cached = await cacheAvatar(owner, url, item);
+    if (cached) break;
+  }
 
-    console.warn(`Skipped ${owner}: ${error.message}`);
+  if (!cached) {
+    console.warn(`Skipped ${owner}: avatar unavailable`);
   }
 }
 
@@ -55,6 +41,55 @@ console.log(`Updated ${inputPath}`);
 
 function sanitize(value) {
   return String(value).replace(/[^a-zA-Z0-9._-]/g, "-");
+}
+
+function findExistingAvatar(owner) {
+  const base = sanitize(owner);
+  for (const ext of ["png", "jpg", "jpeg", "webp"]) {
+    const avatarLocal = `assets/avatars/${base}.${ext}`;
+    if (existsSync(resolve(avatarDir, `${base}.${ext}`))) return { avatarLocal };
+  }
+  return null;
+}
+
+async function cacheAvatar(owner, url, item) {
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent": "github-black-tech-ranking"
+      }
+    });
+    if (!response.ok) return false;
+
+    const data = Buffer.from(await response.arrayBuffer());
+    const mime = sniffImageMime(data) || response.headers.get("content-type")?.split(";")[0]?.toLowerCase();
+    const ext = extensionForMime(mime);
+    if (!ext) return false;
+
+    const filename = `${sanitize(owner)}.${ext}`;
+    const avatarLocal = `assets/avatars/${filename}`;
+    const outputPath = resolve(avatarDir, filename);
+    await writeFile(outputPath, data);
+    item.avatarLocal = avatarLocal;
+    console.log(`Cached ${owner} -> ${avatarLocal}`);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function sniffImageMime(buffer) {
+  if (buffer.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))) return "image/png";
+  if (buffer.subarray(0, 3).equals(Buffer.from([0xff, 0xd8, 0xff]))) return "image/jpeg";
+  if (buffer.subarray(0, 4).toString("ascii") === "RIFF" && buffer.subarray(8, 12).toString("ascii") === "WEBP") return "image/webp";
+  return null;
+}
+
+function extensionForMime(mime) {
+  if (mime === "image/png") return "png";
+  if (mime === "image/jpeg" || mime === "image/jpg") return "jpg";
+  if (mime === "image/webp") return "webp";
+  return null;
 }
 
 function parseArgs(argv) {

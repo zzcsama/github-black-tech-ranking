@@ -57,7 +57,7 @@ GITHUB_TOKEN=你的token npm run build:generated
 2. 把这个目录里的文件提交并推送到仓库。
 3. 在仓库 Settings -> Pages 里选择 GitHub Actions。
 4. 推送到 `main` 后，`.github/workflows/pages.yml` 会自动部署 `docs/` 页面。
-5. `.github/workflows/weekly-ranking.yml` 会每周日更新数据、头像和图片。
+5. `.github/workflows/weekly-ranking.yml` 会每天采集快照、更新网页，并在每周日推送 Telegram。
 
 README 里显示图片用：
 
@@ -88,7 +88,7 @@ outputs/                       输出图片目录
 
 ## 自动化流程
 
-推荐流程是每周日跑一次采集，保存当天快照，并发布榜单图。
+推荐流程是每天跑一次采集，保存当天快照；每周日发布榜单图。
 
 ```text
 GitHub API
@@ -115,6 +115,8 @@ PUBLIC_IMAGE_URL     榜单 PNG 的公开地址，可选
 ```
 
 把 bot 加进频道并设为管理员后，工作流会把榜单 PNG 和摘要直接发到频道。
+
+第一次没有 7 天前快照时，增长会显示“新上榜”。运行一周后，就会显示真实的本周 Star 增长。
 
 如果你仍想走 Hermes，也可以额外配置：
 

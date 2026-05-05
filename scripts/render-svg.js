@@ -100,7 +100,7 @@ function renderCard(item, index, x, y, w, h) {
   const summaryZh = truncateEnd(item.summaryZh || "这个项目还需要补一句中文解释", 30);
   const summaryEn = truncateEnd(item.summaryEn || item.description || "", 76);
   const stars = formatCompact(item.stars || 0);
-  const growth = `+${formatCompact(item.weeklyGrowth || 0)}`;
+  const growth = item.growthPending ? "新上榜" : `+${formatCompact(item.weeklyGrowth || 0)}`;
   const hot = item.hot || rank <= 2;
   const repo = truncateMiddle(item.repo || "unknown/repo", hot ? 24 : 30);
   const statX = w - 168;
@@ -155,7 +155,9 @@ async function hydrateAvatarData(data, root) {
     const avatarPath = resolve(root, item.avatarLocal);
     if (!existsSync(avatarPath)) continue;
     const buffer = await readFile(avatarPath);
-    item.avatarDataUri = `data:${mimeType(avatarPath)};base64,${buffer.toString("base64")}`;
+    const mime = sniffImageMime(buffer) || mimeType(avatarPath);
+    if (!mime) continue;
+    item.avatarDataUri = `data:${mime};base64,${buffer.toString("base64")}`;
   }
 }
 
@@ -165,6 +167,13 @@ function mimeType(filePath) {
   if (ext === ".webp") return "image/webp";
   if (ext === ".svg") return "image/svg+xml";
   return "image/png";
+}
+
+function sniffImageMime(buffer) {
+  if (buffer.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))) return "image/png";
+  if (buffer.subarray(0, 3).equals(Buffer.from([0xff, 0xd8, 0xff]))) return "image/jpeg";
+  if (buffer.subarray(0, 4).toString("ascii") === "RIFF" && buffer.subarray(8, 12).toString("ascii") === "WEBP") return "image/webp";
+  return null;
 }
 
 function renderGithubMark(x, y) {

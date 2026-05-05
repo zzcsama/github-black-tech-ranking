@@ -31,7 +31,7 @@ function renderCard(item, index) {
   card.querySelector(".summary").textContent = item.summaryZh || "这个项目还需要补一句中文解释";
   card.querySelector(".desc").textContent = item.summaryEn || item.description || "";
   card.querySelector(".stars").textContent = `★ ${formatCompact(item.stars || 0)}`;
-  card.querySelector(".growth").textContent = `↗ +${formatCompact(item.weeklyGrowth || 0)}`;
+  card.querySelector(".growth").textContent = item.growthPending ? "新上榜" : `↗ +${formatCompact(item.weeklyGrowth || 0)}`;
 
   return card;
 }

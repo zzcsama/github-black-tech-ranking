@@ -74,7 +74,7 @@ https://zzcsama.github.io/github-black-tech-ranking/social/github-black-tech-ran
 
 ## Telegram 推送
 
-每周更新工作流默认安排在每周日 09:00（北京时间）。推荐直接用 Telegram Bot 推送。在仓库 Settings -> Secrets and variables -> Actions 中添加：
+工作流每天 09:00（北京时间）采集一次快照；每周日 09:10（北京时间）推送到 Telegram。推荐直接用 Telegram Bot 推送。在仓库 Settings -> Secrets and variables -> Actions 中添加：
 
 ```text
 Secrets:
@@ -87,6 +87,8 @@ PUBLIC_IMAGE_URL
 ```
 
 `TELEGRAM_CHAT_ID` 可以是公开频道名，例如 `@your_channel`；私有频道通常是 `-100...` 开头的数字。Bot 需要加入频道并设为管理员。
+
+第一次没有 7 天前快照时，增长会显示“新上榜”。运行一周后，就会显示真实的本周 Star 增长。
 
 如需继续使用 Hermes，可额外配置：
 

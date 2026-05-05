@@ -2,7 +2,8 @@ name: Build GitHub Ranking
 
 on:
   schedule:
-    - cron: "0 1 * * 0"
+    - cron: "0 1 * * *"
+    - cron: "10 1 * * 0"
   workflow_dispatch:
 
 permissions:
@@ -45,8 +46,8 @@ jobs:
           commit_message: "chore: update weekly GitHub ranking"
           file_pattern: data/ranking.generated.json data/snapshots/*.json docs/data/ranking.json docs/assets/avatars/*.png docs/social/github-black-tech-ranking.png outputs/github-black-tech-ranking.svg outputs/github-black-tech-ranking.png
       - name: Publish to Hermes
-        if: ${{ env.HERMES_WEBHOOK_URL != '' }}
+        if: ${{ env.HERMES_WEBHOOK_URL != '' && (github.event_name == 'workflow_dispatch' || github.event.schedule == '10 1 * * 0') }}
         run: npm run publish:hermes
       - name: Publish to Telegram
-        if: ${{ env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != '' }}
+        if: ${{ env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != '' && (github.event_name == 'workflow_dispatch' || github.event.schedule == '10 1 * * 0') }}
         run: npm run publish:telegram
