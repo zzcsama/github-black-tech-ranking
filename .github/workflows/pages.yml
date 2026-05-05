@@ -27,7 +27,7 @@ jobs:
         with:
           node-version: 22
       - name: Install image export tool
-        run: sudo apt-get update && sudo apt-get install -y librsvg2-bin
+        run: sudo apt-get update && sudo apt-get install -y librsvg2-bin fonts-noto-cjk fonts-noto-color-emoji && sudo fc-cache -f
       - name: Build site assets
         run: npm run build
       - uses: actions/configure-pages@v5

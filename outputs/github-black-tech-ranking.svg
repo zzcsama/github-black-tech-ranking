@@ -15,8 +15,8 @@
       <stop offset="1" stop-color="#f1f7fb"/>
     </linearGradient>
     <style>
-      .font { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Microsoft YaHei", Arial, sans-serif; }
-      .mono { font-family: "SFMono-Regular", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace; }
+      .font { font-family: "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, Arial, sans-serif; }
+      .mono { font-family: "SFMono-Regular", "Cascadia Mono", "Roboto Mono", "Noto Sans Mono CJK SC", Menlo, Consolas, monospace; }
       .title { font-size: 44px; font-weight: 850; fill: #111827; letter-spacing: 0; }
       .subtitle { font-size: 29px; font-weight: 650; fill: #667385; letter-spacing: 0; }
       .meta { font-size: 19px; font-weight: 620; fill: #718096; letter-spacing: 0; }
