@@ -40,7 +40,7 @@ const snapshotPath = join(snapshotDir, `${date}.json`);
 await writeFile(snapshotPath, `${JSON.stringify(snapshot, null, 2)}\n`, "utf8");
 
 const baseline = await loadBestBaseline(snapshotDir, date);
-const rankingItems = repos
+const rankedItems = repos
   .map((repo) => {
     const baselineStars = baseline?.[repo.full_name]?.stars;
     const growthPending = !Number.isFinite(baselineStars);
@@ -61,7 +61,11 @@ const rankingItems = repos
     };
   })
   .sort((a, b) => rankingScore(b) - rankingScore(a))
-  .slice(0, limit)
+  .slice(0, limit);
+
+await enrichSummaries(rankedItems);
+
+const rankingItems = rankedItems
   .map((item, index) => ({ rank: index + 1, ...item }));
 
 const output = {
@@ -112,6 +116,141 @@ async function searchRepositories(query) {
 
   const data = await response.json();
   return data.items || [];
+}
+
+async function enrichSummaries(items) {
+  if (!process.env.DEEPSEEK_API_KEY) {
+    console.log("DEEPSEEK_API_KEY not set; using rule-based Chinese summaries.");
+    return;
+  }
+
+  for (const item of items) {
+    try {
+      const readme = await fetchReadme(item.repo);
+      const summary = await summarizeWithDeepSeek(item, readme);
+      if (summary) {
+        item.summaryZh = summary;
+        item.summarySource = "deepseek";
+        console.log(`DeepSeek summary: ${item.repo} -> ${summary}`);
+      }
+    } catch (error) {
+      console.warn(`DeepSeek summary skipped for ${item.repo}: ${error.message}`);
+    }
+  }
+}
+
+async function fetchReadme(fullName) {
+  const url = new URL(`https://api.github.com/repos/${fullName}/readme`);
+  const headers = {
+    Accept: "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+    "User-Agent": "github-black-tech-ranking"
+  };
+  if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+
+  const response = await fetch(url, { headers });
+  if (response.status === 404) return "";
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(`README fetch failed (${response.status}): ${body.slice(0, 180)}`);
+  }
+
+  const data = await response.json();
+  if (data.encoding !== "base64" || !data.content) return "";
+  return Buffer.from(String(data.content).replace(/\s/g, ""), "base64").toString("utf8");
+}
+
+async function summarizeWithDeepSeek(item, readme) {
+  const baseUrl = (process.env.DEEPSEEK_BASE_URL || "https://api.deepseek.com").replace(/\/$/, "");
+  const model = process.env.DEEPSEEK_MODEL || "deepseek-v4-flash";
+  const response = await fetch(`${baseUrl}/chat/completions`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.DEEPSEEK_API_KEY}`
+    },
+    body: JSON.stringify({
+      model,
+      messages: [
+        {
+          role: "system",
+          content: [
+            "你是面向中文开发者的 GitHub 榜单编辑。",
+            "你的任务是把开源项目 README 和 description 改写成一句大白话。",
+            "只输出 JSON，格式为 {\"summaryZh\":\"...\"}。"
+          ].join("")
+        },
+        {
+          role: "user",
+          content: buildSummaryPrompt(item, readme)
+        }
+      ],
+      thinking: { type: "disabled" },
+      temperature: 0.25,
+      max_tokens: 120,
+      response_format: { type: "json_object" },
+      stream: false
+    })
+  });
+
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(`DeepSeek request failed (${response.status}): ${body.slice(0, 220)}`);
+  }
+
+  const data = await response.json();
+  const content = data.choices?.[0]?.message?.content;
+  return sanitizeSummary(parseSummary(content), item.summaryZh);
+}
+
+function buildSummaryPrompt(item, readme) {
+  return [
+    `仓库：${item.repo}`,
+    `Stars：${item.stars}`,
+    `语言：${item.language || "unknown"}`,
+    `Topics：${(item.topics || []).join(", ") || "none"}`,
+    `Description：${item.summaryEn || ""}`,
+    `README 摘要材料：${compactReadme(readme) || "无"}`,
+    "",
+    "请写一句中文大白话，要求：",
+    "- 16 到 32 个汉字左右，可以保留 AI、LLM、RAG、Claude、Codex 等英文术语",
+    "- 说清楚它具体帮用户做什么，不要只写“提升效率”",
+    "- 不要句号，不要引号，不要 Markdown，不要营销口号",
+    "- 只输出 JSON，例如 {\"summaryZh\":\"把网页操作交给AI自动完成\"}"
+  ].join("\n");
+}
+
+function parseSummary(content) {
+  if (!content) return "";
+  const cleaned = String(content).replace(/^```(?:json)?/i, "").replace(/```$/i, "").trim();
+  try {
+    const parsed = JSON.parse(cleaned);
+    return parsed.summaryZh || "";
+  } catch {
+    return cleaned;
+  }
+}
+
+function sanitizeSummary(summary, fallback) {
+  const cleaned = String(summary || "")
+    .replace(/^[\s"'“”‘’]+|[\s"'“”‘’。.!！]+$/g, "")
+    .replace(/\s+/g, "")
+    .trim();
+  if (Array.from(cleaned).length < 8) return fallback;
+  return Array.from(cleaned).slice(0, 42).join("");
+}
+
+function compactReadme(readme) {
+  return String(readme || "")
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/<!--[\s\S]*?-->/g, " ")
+    .replace(/!\[[^\]]*]\([^)]+\)/g, " ")
+    .replace(/\[([^\]]+)]\([^)]+\)/g, "$1")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[#>*_`|~-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 5000);
 }
 
 async function loadBestBaseline(dir, currentDate) {
