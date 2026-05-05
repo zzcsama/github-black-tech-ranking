@@ -1,0 +1,107 @@
+{
+  "title": "开源黑科技榜单",
+  "subtitle": "GitHub 本周增长精选 · 翻译成你能听懂的大白话",
+  "tag": "开源黑科技",
+  "note": "精选 8 个 AI 相关项目",
+  "updatedAt": "2026/5/4",
+  "items": [
+    {
+      "rank": 1,
+      "url": "https://github.com/mattpocock/skills",
+      "avatarUrl": "https://github.com/mattpocock.png?size=160",
+      "repo": "mattpocock/skills",
+      "summaryZh": "给工程师整理实用技能，助力职场能力提升",
+      "summaryEn": "Skills for Real Engineers. Straight from my .claude directory.",
+      "stars": 57400,
+      "weeklyGrowth": 34800,
+      "hot": true,
+      "accent": "#f4a340",
+      "avatarLocal": "assets/avatars/mattpocock.png"
+    },
+    {
+      "rank": 2,
+      "url": "https://github.com/TauricResearch/TradingAgents",
+      "avatarUrl": "https://github.com/TauricResearch.png?size=160",
+      "repo": "TauricResearch/TradingAgents",
+      "summaryZh": "用AI多智能体框架，辅助进行金融交易决策",
+      "summaryEn": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
+      "stars": 65700,
+      "weeklyGrowth": 11300,
+      "hot": true,
+      "accent": "#5d78d8",
+      "avatarLocal": "assets/avatars/TauricResearch.png"
+    },
+    {
+      "rank": 3,
+      "url": "https://github.com/ruvnet/ruflo",
+      "avatarUrl": "https://github.com/ruvnet.png?size=160",
+      "repo": "ruvnet/ruflo",
+      "summaryZh": "搭建Claude多智能体集群，构建智能工作流",
+      "summaryEn": "The leading agent orchestration platform for Claude. Deploy intelligent multi-agent workflows.",
+      "stars": 39500,
+      "weeklyGrowth": 4300,
+      "accent": "#e22d7a",
+      "avatarLocal": "assets/avatars/ruvnet.png"
+    },
+    {
+      "rank": 4,
+      "url": "https://github.com/abhigyanpatwari/GitNexus",
+      "avatarUrl": "https://github.com/abhigyanpatwari.png?size=160",
+      "repo": "abhigyanpatwari/GitNexus",
+      "summaryZh": "浏览器里可视化探索代码，快速理清项目结构",
+      "summaryEn": "GitNexus: The Zero-Server Code Intelligence Engine - a client-side way to inspect repositories.",
+      "stars": 35300,
+      "weeklyGrowth": 5400,
+      "accent": "#6f8cff",
+      "avatarLocal": "assets/avatars/abhigyanpatwari.png"
+    },
+    {
+      "rank": 5,
+      "url": "https://github.com/forrestchang/andrej-karpathy-skills",
+      "avatarUrl": "https://github.com/forrestchang.png?size=160",
+      "repo": "forrestchang/andrej-karpathy-skills",
+      "summaryZh": "优化Claude代码能力，减少LLM编码错误",
+      "summaryEn": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's workflow.",
+      "stars": 109600,
+      "weeklyGrowth": 18700,
+      "accent": "#1d75d8",
+      "avatarLocal": "assets/avatars/forrestchang.png"
+    },
+    {
+      "rank": 6,
+      "url": "https://github.com/ComposioHQ/awesome-codex-skills",
+      "avatarUrl": "https://github.com/ComposioHQ.png?size=160",
+      "repo": "ComposioHQ/awesome-codex-skills",
+      "summaryZh": "提供实用Codex技能，助力自动化工作流",
+      "summaryEn": "A curated list of practical Codex skills for automating workflows across the Codex CLI.",
+      "stars": 6200,
+      "weeklyGrowth": 4300,
+      "accent": "#7c8794",
+      "avatarLocal": "assets/avatars/ComposioHQ.png"
+    },
+    {
+      "rank": 7,
+      "url": "https://github.com/soxoj/maigret",
+      "avatarUrl": "https://github.com/soxoj.png?size=160",
+      "repo": "soxoj/maigret",
+      "summaryZh": "输入用户名，一键查询该用户在3000+平台的账号",
+      "summaryEn": "Collect a dossier on a person by username from 3000+ sites.",
+      "stars": 24000,
+      "weeklyGrowth": 3700,
+      "accent": "#f1bd36",
+      "avatarLocal": "assets/avatars/soxoj.png"
+    },
+    {
+      "rank": 8,
+      "url": "https://github.com/AIDC-AI/Pixelle-Video",
+      "avatarUrl": "https://github.com/AIDC-AI.png?size=160",
+      "repo": "AIDC-AI/Pixelle-Video",
+      "summaryZh": "AI全自动生成短视频，无需手动剪辑",
+      "summaryEn": "AI Fully Automated Short Video Engine.",
+      "stars": 10300,
+      "weeklyGrowth": 2700,
+      "accent": "#95a3b8",
+      "avatarLocal": "assets/avatars/AIDC-AI.png"
+    }
+  ]
+}

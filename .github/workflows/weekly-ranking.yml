@@ -1,0 +1,47 @@
+name: Build GitHub Ranking
+
+on:
+  schedule:
+    - cron: "0 1 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-ranking:
+    runs-on: ubuntu-latest
+    env:
+      HERMES_WEBHOOK_URL: ${{ secrets.HERMES_WEBHOOK_URL }}
+      TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL }}
+      PUBLIC_PAGE_URL: ${{ vars.PUBLIC_PAGE_URL }}
+      PUBLIC_IMAGE_URL: ${{ vars.PUBLIC_IMAGE_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install image export tool
+        run: sudo apt-get update && sudo apt-get install -y librsvg2-bin
+      - name: Collect GitHub repository data
+        run: npm run collect
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Sync site data
+        run: node scripts/sync-site-data.js --input data/ranking.generated.json --output docs/data/ranking.json
+      - name: Cache GitHub avatars
+        run: npm run site:avatars
+      - name: Render ranking image
+        run: npm run site:render
+      - name: Export social PNG
+        run: npm run site:png
+      - name: Copy social image into Pages site
+        run: npm run site:assets
+      - name: Commit generated ranking
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update weekly GitHub ranking"
+          file_pattern: data/ranking.generated.json data/snapshots/*.json docs/data/ranking.json docs/assets/avatars/*.png docs/social/github-black-tech-ranking.png outputs/github-black-tech-ranking.svg outputs/github-black-tech-ranking.png
+      - name: Publish to Hermes
+        if: ${{ env.HERMES_WEBHOOK_URL != '' }}
+        run: npm run publish:hermes

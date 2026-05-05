@@ -1,0 +1,25 @@
+{
+  "name": "github-black-tech-ranking",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "demo": "node scripts/render-svg.js --input data/ranking.sample.json --output outputs/github-black-tech-ranking.svg",
+    "demo:png": "npm run demo && rsvg-convert -w 1080 -h 1440 outputs/github-black-tech-ranking.svg -o outputs/github-black-tech-ranking.png",
+    "site:sync": "node scripts/sync-site-data.js --input data/ranking.sample.json --output docs/data/ranking.json",
+    "site:avatars": "node scripts/cache-avatars.js --input docs/data/ranking.json --avatarDir docs/assets/avatars",
+    "site:render": "node scripts/render-svg.js --input docs/data/ranking.json --asset-root docs --output outputs/github-black-tech-ranking.svg",
+    "site:png": "rsvg-convert -w 1080 -h 1440 outputs/github-black-tech-ranking.svg -o outputs/github-black-tech-ranking.png",
+    "site:assets": "node scripts/copy-social-assets.js --input outputs/github-black-tech-ranking.png --output docs/social/github-black-tech-ranking.png",
+    "build": "npm run site:sync && npm run site:avatars && npm run site:render && npm run site:png && npm run site:assets",
+    "build:generated": "npm run collect && node scripts/sync-site-data.js --input data/ranking.generated.json --output docs/data/ranking.json && npm run site:avatars && npm run site:render && npm run site:png && npm run site:assets",
+    "dev": "node scripts/serve.js --root docs --port 4173",
+    "publish:hermes": "node scripts/publish-hermes.js --input docs/data/ranking.json",
+    "collect": "node scripts/collect-github.js --output data/ranking.generated.json",
+    "render:generated": "node scripts/render-svg.js --input data/ranking.generated.json --output outputs/github-black-tech-ranking.svg",
+    "render:png": "rsvg-convert -w 1080 -h 1440 outputs/github-black-tech-ranking.svg -o outputs/github-black-tech-ranking.png"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

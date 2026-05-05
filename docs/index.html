@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>开源黑科技榜单</title>
+    <meta name="description" content="GitHub 本周增长精选，翻译成你能听懂的大白话。" />
+    <meta property="og:title" content="开源黑科技榜单" />
+    <meta property="og:description" content="GitHub 本周增长精选，翻译成你能听懂的大白话。" />
+    <meta property="og:image" content="social/github-black-tech-ranking.png" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <div>
+          <span class="pill">开源黑科技</span>
+          <h1>
+            <span class="github-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img">
+                <path
+                  d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.77-.24.77-.54v-2.1c-3.12.68-3.78-1.34-3.78-1.34-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 .1.76 2.64 3.27 1.9.1-.73.39-1.23.71-1.51-2.49-.28-5.1-1.24-5.1-5.52 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.08 1.15A10.7 10.7 0 0 1 12 7.15c.95 0 1.9.13 2.78.38 2.13-1.45 3.07-1.15 3.07-1.15.61 1.54.23 2.68.11 2.96.72.78 1.15 1.78 1.15 3 0 4.29-2.62 5.24-5.11 5.52.4.35.76 1.03.76 2.08v3.14c0 .3.2.65.78.54A11.2 11.2 0 0 0 12 .8Z"
+                />
+              </svg>
+            </span>
+            开源黑科技榜单
+          </h1>
+          <p id="subtitle">GitHub 本周增长精选 · 翻译成你能听懂的大白话</p>
+        </div>
+        <aside class="stats-panel" aria-label="榜单概览">
+          <span id="countLabel">精选 8 个项目</span>
+          <strong id="growthLabel">+0</strong>
+          <small>本周合计新增 Star</small>
+        </aside>
+      </header>
+
+      <section class="toolbar" aria-label="榜单信息">
+        <span id="updatedLabel">更新中</span>
+        <span>GitHub 仓库直达</span>
+      </section>
+
+      <section id="ranking" class="ranking" aria-live="polite"></section>
+    </main>
+
+    <template id="repo-card-template">
+      <a class="repo-card" target="_blank" rel="noreferrer">
+        <span class="rank"></span>
+        <img class="avatar" alt="" loading="lazy" />
+        <span class="content">
+          <span class="topline">
+            <strong class="repo"></strong>
+            <span class="hot">热门</span>
+          </span>
+          <span class="summary"></span>
+          <span class="desc"></span>
+        </span>
+        <span class="metrics">
+          <span class="stars"></span>
+          <span class="growth"></span>
+        </span>
+      </a>
+    </template>
+
+    <script src="assets/app.js" type="module"></script>
+  </body>
+</html>
