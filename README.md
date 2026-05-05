@@ -10,7 +10,7 @@
 
 ```bash
 npm install
-npx playwright install chromium
+npm run browser:install
 ```
 
 ```bash

@@ -29,7 +29,7 @@ jobs:
       - name: Install fonts
         run: sudo apt-get update && sudo apt-get install -y fonts-noto-cjk fonts-noto-color-emoji && sudo fc-cache -f
       - name: Install browser
-        run: npx playwright install --with-deps chromium
+        run: PLAYWRIGHT_BROWSERS_PATH=.ms-playwright npx playwright install --with-deps chromium
       - name: Collect GitHub repository data
         run: npm run collect
         env:

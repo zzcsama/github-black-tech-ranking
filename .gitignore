@@ -1,6 +1,7 @@
 .DS_Store
 node_modules/
 .npm-cache/
+.ms-playwright/
 npm-debug.log*
 *.tar.gz
 .env
