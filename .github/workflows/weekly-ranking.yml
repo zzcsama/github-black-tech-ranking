@@ -8,9 +8,18 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build-ranking:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     env:
       HERMES_WEBHOOK_URL: ${{ secrets.HERMES_WEBHOOK_URL }}
@@ -41,6 +50,8 @@ jobs:
         run: node scripts/sync-site-data.js --input data/ranking.generated.json --output docs/data/ranking.json
       - name: Cache GitHub avatars
         run: npm run site:avatars
+      - name: Render SVG backup
+        run: npm run site:render
       - name: Capture social PNG
         run: npm run site:capture
       - name: Copy social image into Pages site
@@ -50,6 +61,12 @@ jobs:
         with:
           commit_message: "chore: update weekly GitHub ranking"
           file_pattern: data/ranking.generated.json data/snapshots/*.json docs/data/ranking.json docs/assets/avatars/*.png docs/social/github-black-tech-ranking.png outputs/github-black-tech-ranking.svg outputs/github-black-tech-ranking.png
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - id: deployment
+        uses: actions/deploy-pages@v4
       - name: Publish to Hermes
         if: ${{ env.HERMES_WEBHOOK_URL != '' && (github.event_name == 'workflow_dispatch' || github.event.schedule == '10 1 * * 0') }}
         run: npm run publish:hermes
