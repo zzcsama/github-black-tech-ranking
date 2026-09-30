@@ -49,7 +49,7 @@
     </g>
 
     <text class="subtitle" x="64" y="216">GitHub 本周增长精选 · 翻译成你能听懂的大白话</text>
-    <text class="meta" x="64" y="252">精选 8 个 AI 相关项目  更新 2026/9/29</text>
+    <text class="meta" x="64" y="252">精选 8 个 AI 相关项目  更新 2026/9/30</text>
   </g>
 
   <g class="font" transform="translate(64 282)" filter="url(#shadow)">
@@ -76,8 +76,8 @@
       <text x="39" y="23" text-anchor="middle" font-size="18" font-weight="820" fill="#da8a0a">热门</text>
     </g>
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 41.5k</text>
-    <text class="growth" x="924" y="44" text-anchor="end">↗ +16.6k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 43.2k</text>
+    <text class="growth" x="924" y="44" text-anchor="end">↗ +17.9k</text>
   </g>
 <g class="font" transform="translate(64 428)" filter="url(#shadow)">
     <defs>
@@ -103,8 +103,8 @@
       <text x="39" y="23" text-anchor="middle" font-size="18" font-weight="820" fill="#da8a0a">热门</text>
     </g>
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 239.1k</text>
-    <text class="growth" x="924" y="44" text-anchor="end">↗ +6.5k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 240.4k</text>
+    <text class="growth" x="924" y="44" text-anchor="end">↗ +6.7k</text>
   </g>
 <g class="font" transform="translate(64 574)" filter="url(#shadow)">
     <defs>
@@ -130,8 +130,8 @@
       <text x="39" y="23" text-anchor="middle" font-size="18" font-weight="820" fill="#da8a0a">热门</text>
     </g>
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 60.6k</text>
-    <text class="growth" x="924" y="44" text-anchor="end">↗ +5.4k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 61.7k</text>
+    <text class="growth" x="924" y="44" text-anchor="end">↗ +6.3k</text>
   </g>
 <g class="font" transform="translate(64 720)" filter="url(#shadow)">
     <defs>
@@ -154,8 +154,8 @@
 
     
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 269.2k</text>
-    <text class="growth" x="924" y="44" text-anchor="end">↗ +4.3k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 269.8k</text>
+    <text class="growth" x="924" y="44" text-anchor="end">↗ +4.2k</text>
   </g>
 <g class="font" transform="translate(64 866)" filter="url(#shadow)">
     <defs>
@@ -178,8 +178,8 @@
 
     
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 138.3k</text>
-    <text class="growth" x="924" y="44" text-anchor="end">↗ +4.3k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 138.8k</text>
+    <text class="growth" x="924" y="44" text-anchor="end">↗ +4k</text>
   </g>
 <g class="font" transform="translate(64 1012)" filter="url(#shadow)">
     <defs>
@@ -202,7 +202,7 @@
 
     
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 147.7k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 148.4k</text>
     <text class="growth" x="924" y="44" text-anchor="end">↗ +3.8k</text>
   </g>
 <g class="font" transform="translate(64 1158)" filter="url(#shadow)">
@@ -226,7 +226,7 @@
 
     
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 292.6k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 293.1k</text>
     <text class="growth" x="924" y="44" text-anchor="end">↗ +2.8k</text>
   </g>
 <g class="font" transform="translate(64 1304)" filter="url(#shadow)">
@@ -246,11 +246,11 @@
 
     <text class="repo mono" x="176" y="45">firecrawl/firecrawl</text>
     <text class="summary" x="176" y="83">搭建智能体工作流，把复杂任务拆给多个AI处理</text>
-    <text class="desc" x="176" y="111">The web data API to search, scrape, and interact at scale. 🔥</text>
+    <text class="desc" x="176" y="111">🔥 Supercharge your AI agents with data from the web and beyond. A web data…</text>
 
     
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 186.2k</text>
-    <text class="growth" x="924" y="44" text-anchor="end">↗ +3.1k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 186.8k</text>
+    <text class="growth" x="924" y="44" text-anchor="end">↗ +3.3k</text>
   </g>
 </svg>
