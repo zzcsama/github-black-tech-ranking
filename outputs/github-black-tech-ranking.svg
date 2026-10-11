@@ -103,7 +103,7 @@
       <text x="39" y="23" text-anchor="middle" font-size="18" font-weight="820" fill="#da8a0a">热门</text>
     </g>
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 49.2k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 49.3k</text>
     <text class="growth" x="924" y="44" text-anchor="end">↗ +6k</text>
   </g>
 <g class="font" transform="translate(64 574)" filter="url(#shadow)">
@@ -251,6 +251,6 @@
     
 
     <text class="stat" x="784" y="44" text-anchor="end">★ 99.4k</text>
-    <text class="growth" x="924" y="44" text-anchor="end">↗ +3.6k</text>
+    <text class="growth" x="924" y="44" text-anchor="end">↗ +3.7k</text>
   </g>
 </svg>
