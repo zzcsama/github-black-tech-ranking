@@ -49,7 +49,7 @@
     </g>
 
     <text class="subtitle" x="64" y="216">GitHub 本周增长精选 · 翻译成你能听懂的大白话</text>
-    <text class="meta" x="64" y="252">精选 8 个 AI 相关项目  更新 2026/10/22</text>
+    <text class="meta" x="64" y="252">精选 8 个 AI 相关项目  更新 2026/10/23</text>
   </g>
 
   <g class="font" transform="translate(64 282)" filter="url(#shadow)">
@@ -76,8 +76,8 @@
       <text x="39" y="23" text-anchor="middle" font-size="18" font-weight="820" fill="#da8a0a">热门</text>
     </g>
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 359.5k</text>
-    <text class="growth" x="924" y="44" text-anchor="end">↗ +110.6k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 367.7k</text>
+    <text class="growth" x="924" y="44" text-anchor="end">↗ +92.1k</text>
   </g>
 <g class="font" transform="translate(64 428)" filter="url(#shadow)">
     <defs>
@@ -103,8 +103,8 @@
       <text x="39" y="23" text-anchor="middle" font-size="18" font-weight="820" fill="#da8a0a">热门</text>
     </g>
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 80.7k</text>
-    <text class="growth" x="924" y="44" text-anchor="end">↗ +13.7k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 82k</text>
+    <text class="growth" x="924" y="44" text-anchor="end">↗ +12.5k</text>
   </g>
 <g class="font" transform="translate(64 574)" filter="url(#shadow)">
     <defs>
@@ -130,8 +130,8 @@
       <text x="39" y="23" text-anchor="middle" font-size="18" font-weight="820" fill="#da8a0a">热门</text>
     </g>
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 172k</text>
-    <text class="growth" x="924" y="44" text-anchor="end">↗ +8.3k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 173.8k</text>
+    <text class="growth" x="924" y="44" text-anchor="end">↗ +9.2k</text>
   </g>
 <g class="font" transform="translate(64 720)" filter="url(#shadow)">
     <defs>
@@ -157,8 +157,8 @@
       <text x="39" y="23" text-anchor="middle" font-size="18" font-weight="820" fill="#da8a0a">热门</text>
     </g>
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 257.3k</text>
-    <text class="growth" x="924" y="44" text-anchor="end">↗ +7.4k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 258.5k</text>
+    <text class="growth" x="924" y="44" text-anchor="end">↗ +7.9k</text>
   </g>
 <g class="font" transform="translate(64 866)" filter="url(#shadow)">
     <defs>
@@ -184,8 +184,8 @@
       <text x="39" y="23" text-anchor="middle" font-size="18" font-weight="820" fill="#da8a0a">热门</text>
     </g>
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 285.9k</text>
-    <text class="growth" x="924" y="44" text-anchor="end">↗ +6.3k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 286.7k</text>
+    <text class="growth" x="924" y="44" text-anchor="end">↗ +6.1k</text>
   </g>
 <g class="font" transform="translate(64 1012)" filter="url(#shadow)">
     <defs>
@@ -211,8 +211,8 @@
       <text x="39" y="23" text-anchor="middle" font-size="18" font-weight="820" fill="#da8a0a">热门</text>
     </g>
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 131.9k</text>
-    <text class="growth" x="924" y="44" text-anchor="end">↗ +5.3k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 133.2k</text>
+    <text class="growth" x="924" y="44" text-anchor="end">↗ +6.2k</text>
   </g>
 <g class="font" transform="translate(64 1158)" filter="url(#shadow)">
     <defs>
@@ -238,8 +238,8 @@
       <text x="39" y="23" text-anchor="middle" font-size="18" font-weight="820" fill="#da8a0a">热门</text>
     </g>
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 69.4k</text>
-    <text class="growth" x="924" y="44" text-anchor="end">↗ +5.5k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 70.2k</text>
+    <text class="growth" x="924" y="44" text-anchor="end">↗ +5.4k</text>
   </g>
 <g class="font" transform="translate(64 1304)" filter="url(#shadow)">
     <defs>
@@ -254,18 +254,15 @@
     <text x="53" y="59" text-anchor="middle" font-size="31" font-weight="850" fill="#67758a">8</text>
 
     <circle cx="131" cy="52" r="29" fill="#e9eef5" stroke="#d8e2ed"/>
-    <image href="data:image/png;base64,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" x="102" y="23" width="58" height="58" clip-path="url(#avatarClip8)" preserveAspectRatio="xMidYMid slice"/>
+    <image href="data:image/jpeg;base64,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" x="102" y="23" width="58" height="58" clip-path="url(#avatarClip8)" preserveAspectRatio="xMidYMid slice"/>
 
-    <text class="repo mono" x="176" y="45">anthropics/clau…official</text>
-    <text class="summary" x="176" y="83">提升AI写代码和理解代码库的效率</text>
-    <text class="desc" x="176" y="111">Official, Anthropic-managed directory of high quality Claude Code Plugins.</text>
+    <text class="repo mono" x="176" y="45">obra/superpowers</text>
+    <text class="summary" x="176" y="83">搭建智能体工作流，把复杂任务拆给多个AI处理</text>
+    <text class="desc" x="176" y="111">An agentic skills framework &amp; software development methodology that works.</text>
 
-    <g transform="translate(592 25)">
-      <rect width="78" height="34" rx="17" fill="#fff4cf"/>
-      <text x="39" y="23" text-anchor="middle" font-size="18" font-weight="820" fill="#da8a0a">热门</text>
-    </g>
+    
 
-    <text class="stat" x="784" y="44" text-anchor="end">★ 43.7k</text>
-    <text class="growth" x="924" y="44" text-anchor="end">↗ +5.6k</text>
+    <text class="stat" x="784" y="44" text-anchor="end">★ 303.8k</text>
+    <text class="growth" x="924" y="44" text-anchor="end">↗ +3.8k</text>
   </g>
 </svg>
